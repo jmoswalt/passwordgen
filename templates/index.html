@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Password Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Password Generator">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Quattrocento:700" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <h1><a href="/">Password Generator</a></h1>
+    <h2>{{ password|safe }}</h2>
+    <form method="POST" action="/">
+      <select name="n" value="{{ n }}">
+        {% for num in nums %}
+          <option{% if num == n %} selected="selected"{% endif %}>{{ num }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="generate">Generate Another</button>
+    </form>
+  </body>
+</html>
